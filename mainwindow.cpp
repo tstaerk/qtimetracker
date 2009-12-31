@@ -24,3 +24,8 @@ void MainWindow::changeEvent(QEvent *e)
         break;
     }
 }
+
+void MainWindow::on_actionQuit_triggered()
+{
+    close();
+}
