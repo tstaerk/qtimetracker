@@ -17,9 +17,20 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTreeWidget" name="treeWidget">
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="columnCount">
+       <number>2</number>
+      </property>
       <column>
        <property name="text">
         <string>task name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>timer</string>
        </property>
       </column>
      </widget>

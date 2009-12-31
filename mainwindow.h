@@ -23,6 +23,7 @@ private slots:
     void on_MainWindow_iconSizeChanged(QSize iconSize);
     void on_actionQuit_triggered();
     void slotaddtask();
+    void slotdeletetask();
 };
 
 #endif // MAINWINDOW_H
