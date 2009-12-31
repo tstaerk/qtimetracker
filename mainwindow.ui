@@ -19,7 +19,7 @@
      <widget class="QTreeWidget" name="treeWidget">
       <column>
        <property name="text">
-        <string notr="true">1</string>
+        <string>task name</string>
        </property>
       </column>
      </widget>
