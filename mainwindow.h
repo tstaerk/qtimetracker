@@ -20,7 +20,9 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
+    void on_MainWindow_iconSizeChanged(QSize iconSize);
     void on_actionQuit_triggered();
+    void slotaddtask();
 };
 
 #endif // MAINWINDOW_H

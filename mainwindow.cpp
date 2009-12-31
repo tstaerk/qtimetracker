@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->toolBar->addAction(QString("Add a task"),this,SLOT(slotaddtask()));
 }
 
 MainWindow::~MainWindow()
@@ -28,4 +29,14 @@ void MainWindow::changeEvent(QEvent *e)
 void MainWindow::on_actionQuit_triggered()
 {
     close();
+}
+
+void MainWindow::slotaddtask()
+{
+    ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString("new task"))));
+}
+
+void MainWindow::on_MainWindow_iconSizeChanged(QSize iconSize)
+{
+
 }
