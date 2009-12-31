@@ -17,6 +17,9 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTreeWidget" name="treeWidget">
+      <property name="inputMethodHints">
+       <set>Qt::ImhNone</set>
+      </property>
       <column>
        <property name="text">
         <string>task name</string>

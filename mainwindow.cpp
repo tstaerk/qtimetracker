@@ -1,3 +1,4 @@
+#include <QInputDialog>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -65,7 +66,12 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::slotaddtask()
 {
-    ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString("new task"))));
+    bool ok;
+    QString taskname = QInputDialog::getText(this, QString("Question"),
+                                              QString("task name:"), QLineEdit::Normal,
+                                              QString(""), &ok);
+         if (ok && !taskname.isEmpty())
+             ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskname)));
 }
 
 void MainWindow::on_MainWindow_iconSizeChanged(QSize iconSize)
