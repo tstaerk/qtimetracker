@@ -271,3 +271,8 @@ bool taskDialog::hasaccepted()
 {
     return accepted;
 }
+
+void taskDialog::on_pushButton_30_clicked()
+{
+    ui->lineEdit->setText(ui->lineEdit->text().left(ui->lineEdit->text().length()-1)); // Uni... what?
+}

@@ -24,6 +24,7 @@ private:
     bool caps;
 
 private slots:
+    void on_pushButton_30_clicked();
     void on_pushButton_31_clicked();
     void on_pushButton_29_clicked();
     void on_pushButton_21_clicked();

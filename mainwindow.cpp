@@ -200,6 +200,7 @@ void MainWindow::slotaddtask()
     taskdialog->exec();
     if (taskdialog->hasaccepted()) ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskdialog->text())));
     save();
+    ui->treeWidget->resizeColumnToContents(0);
 }
 
 void MainWindow::slotstarttiming()
