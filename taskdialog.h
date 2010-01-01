@@ -13,6 +13,7 @@ public:
     taskDialog(QWidget *parent = 0);
     ~taskDialog();
     QString text();
+    bool hasaccepted();
 
 protected:
     void changeEvent(QEvent *e);
@@ -23,6 +24,7 @@ private:
     bool caps;
 
 private slots:
+    void on_pushButton_31_clicked();
     void on_pushButton_29_clicked();
     void on_pushButton_21_clicked();
     void on_pushButton_26_clicked();

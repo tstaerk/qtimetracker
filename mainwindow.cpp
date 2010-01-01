@@ -122,7 +122,7 @@ static char *ch_delete[] = {
 "                      ",
 };
 static char * watch_0_xpm[] = {
-"15 15 7 1",
+"15 13 7 1",
 "       c None",
 ".      c #000000",
 "+      c #4A4A4A",
@@ -130,7 +130,6 @@ static char * watch_0_xpm[] = {
 "#      c #E9E9E9",
 "$      c #989898",
 "%      c #FFFFFF",
-"       .       ",
 "    +@#.#@+    ",
 "   $%%%.%%%$   ",
 "  $%%%%.%%%%$  ",
@@ -143,8 +142,7 @@ static char * watch_0_xpm[] = {
 " +%%%%%%%%%%%+ ",
 "  $%%%%%%%%%$  ",
 "   $%%%%%%%$   ",
-"    +@#%#@+    ",
-"       .       "};
+"    +@#%#@+    "};
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -196,7 +194,7 @@ void MainWindow::slotaddtask()
 {
     taskDialog* taskdialog=new taskDialog();
     taskdialog->exec();
-    ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskdialog->text())));
+    if (taskdialog->hasaccepted()) ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskdialog->text())));
     save();
 }
 

@@ -260,3 +260,14 @@ void taskDialog::on_pushButton_29_clicked()
 {
     caps=!caps;
 }
+
+void taskDialog::on_pushButton_31_clicked()
+{
+    accepted=false;
+    close();
+}
+
+bool taskDialog::hasaccepted()
+{
+    return accepted;
+}
