@@ -1,8 +1,38 @@
 #include <QInputDialog>
+#include <QFile>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 // Gallery of unmodern art
+static char *ch_new[] = {
+/* columns rows colors chars-per-pixel */
+"22 22 2 1",
+"+ c #009900",
+"  c None",
+/* pixels */
+"                      ",
+"                      ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"  ++++++++++++++++++  ",
+"  ++++++++++++++++++  ",
+"  ++++++++++++++++++  ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"         +++          ",
+"                      ",
+"                      ",
+"                      ",
+};
 static char *ch_start[] = {
 /* columns rows colors chars-per-pixel */
 "22 22 2 1",
@@ -120,8 +150,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->toolBar->addAction(QString("Add a task"),this,SLOT(slotaddtask()));
-
+    load();
+    const QPixmap pm_new(ch_new);
+    QIcon qi_new(pm_new);
+    ui->toolBar->addAction(qi_new,QString("Add a task"),this,SLOT(slotaddtask()));
     const QPixmap pm_start(ch_start);
     QIcon qi_start(pm_start);
     ui->toolBar->addAction(qi_start,QString("Start timing"));
@@ -165,11 +197,48 @@ void MainWindow::slotaddtask()
                                               QString(""), &ok);
          if (ok && !taskname.isEmpty())
              ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskname)));
+    save();
 }
 
 void MainWindow::slotdeletetask()
 {
     delete(ui->treeWidget->currentItem());
+}
+
+QString MainWindow::save()
+{
+    QString err;
+    QFile file1(QString("qtimetracker.txt"));
+    if (!file1.open(QIODevice::ReadWrite | QIODevice::Text)) err=QString("Could not open file");
+    else
+    {
+        for (int i=0; i<ui->treeWidget->topLevelItemCount(); i=i+1)
+        {
+            file1.write(ui->treeWidget->topLevelItem(i)->text(0).append("\n").toUtf8());
+        }
+        file1.close();
+    }
+    return err;
+}
+
+QString MainWindow::load()
+{
+    QString err;
+    QFile file1(QString("qtimetracker.txt"));
+    if (!file1.open(QIODevice::ReadOnly | QIODevice::Text)) err=QString("Could not open file");
+    else
+    {
+        QByteArray line;
+        int i=0;
+        while (!file1.atEnd())
+        {
+            line=file1.readLine();
+            ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString(line))));
+            i++;
+        }
+        file1.close();
+    }
+    return err;
 }
 
 void MainWindow::on_MainWindow_iconSizeChanged(QSize iconSize)

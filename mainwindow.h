@@ -20,6 +20,8 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
+    QString save();
+    QString load();
     void on_MainWindow_iconSizeChanged(QSize iconSize);
     void on_actionQuit_triggered();
     void slotaddtask();
