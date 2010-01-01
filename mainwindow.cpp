@@ -1,4 +1,5 @@
 #include <QInputDialog>
+#include <QDateTime>
 #include <QFile>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -167,6 +168,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->header()->resizeSection(1,20);
     ui->treeWidget->header()->resizeSection(2,50);
+    ui->treeWidget->setColumnCount(4);
+    ui->treeWidget->setColumnHidden(3,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
     item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8));
     item1->setText(2, QApplication::translate("MainWindow", "time", 0, QApplication::UnicodeUTF8));
@@ -208,6 +211,7 @@ void MainWindow::slotstarttiming()
     const QPixmap pm_watch_0(watch_0_xpm);
     QIcon qi_watch_0(pm_watch_0);
     ui->treeWidget->currentItem()->setIcon(1,qi_watch_0);
+    ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
 }
 
 void MainWindow::slotstoptiming()
@@ -215,6 +219,11 @@ void MainWindow::slotstoptiming()
     const QPixmap pm_watch_0(watch_0_xpm);
     QIcon qi_watch_0(pm_watch_0);
     ui->treeWidget->currentItem()->setIcon(1,QIcon());
+    QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
+    QDateTime now=QDateTime::currentDateTime();
+    int time=laststart.secsTo(now);
+    ui->treeWidget->currentItem()->setText(2,QString::number(ui->treeWidget->currentItem()->text(2).toInt()+time));
+
 }
 
 void MainWindow::slotdeletetask()
