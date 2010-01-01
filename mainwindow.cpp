@@ -2,6 +2,7 @@
 #include <QFile>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "taskdialog.h"
 
 // Gallery of unmodern art
 static char *ch_new[] = {
@@ -194,11 +195,17 @@ void MainWindow::on_actionQuit_triggered()
 void MainWindow::slotaddtask()
 {
     bool ok;
+    /*
     QString taskname = QInputDialog::getText(this, QString("Question"),
                                               QString("task name:"), QLineEdit::Normal,
                                               QString(""), &ok);
          if (ok && !taskname.isEmpty())
              ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskname)));
+    save();
+    */
+    taskDialog* taskdialog=new taskDialog();
+    taskdialog->exec();
+    ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskdialog->text())));
     save();
 }
 
