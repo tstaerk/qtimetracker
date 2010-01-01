@@ -22,8 +22,9 @@ private:
 private slots:
     QString save();
     QString load();
-    void on_MainWindow_iconSizeChanged(QSize iconSize);
     void on_actionQuit_triggered();
+    void slotstarttiming();
+    void slotstoptiming();
     void slotaddtask();
     void slotdeletetask();
 };
