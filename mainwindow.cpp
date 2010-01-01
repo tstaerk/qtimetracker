@@ -165,7 +165,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QIcon qi_delete(pm_delete);
     ui->toolBar->addAction(qi_delete,QString("Delete task"),this,SLOT(slotdeletetask()));
     ui->treeWidget->resizeColumnToContents(0);
-    ui->treeWidget->resizeColumnToContents(1);
+    ui->treeWidget->header()->resizeSection(1,20);
+    ui->treeWidget->header()->resizeSection(2,50);
+    QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
+    item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8));
+    item1->setText(2, QApplication::translate("MainWindow", "time", 0, QApplication::UnicodeUTF8));
 }
 
 MainWindow::~MainWindow()
