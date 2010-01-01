@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>410</width>
+    <height>224</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>44</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>83</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -43,7 +43,7 @@
    <property name="geometry">
     <rect>
      <x>163</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -56,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>202</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -69,7 +69,7 @@
    <property name="geometry">
     <rect>
      <x>242</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -82,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>281</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -95,7 +95,7 @@
    <property name="geometry">
     <rect>
      <x>321</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -108,8 +108,8 @@
    <property name="geometry">
     <rect>
      <x>361</x>
-     <y>58</y>
-     <width>35</width>
+     <y>78</y>
+     <width>41</width>
      <height>31</height>
     </rect>
    </property>
@@ -121,7 +121,7 @@
    <property name="geometry">
     <rect>
      <x>123</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -134,7 +134,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -147,7 +147,7 @@
    <property name="geometry">
     <rect>
      <x>4</x>
-     <y>58</y>
+     <y>78</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -160,7 +160,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -173,7 +173,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -186,7 +186,7 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -199,7 +199,7 @@
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -212,7 +212,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -225,7 +225,7 @@
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -238,7 +238,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -251,7 +251,7 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>90</y>
+     <y>110</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -263,8 +263,8 @@
   <widget class="QPushButton" name="pushButton_22">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>120</y>
+     <x>44</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -276,8 +276,8 @@
   <widget class="QPushButton" name="pushButton_23">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>120</y>
+     <x>83</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -289,8 +289,8 @@
   <widget class="QPushButton" name="pushButton_24">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>120</y>
+     <x>123</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -302,8 +302,8 @@
   <widget class="QPushButton" name="pushButton_25">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>120</y>
+     <x>163</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -315,8 +315,8 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>120</y>
+     <x>202</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -328,8 +328,8 @@
   <widget class="QPushButton" name="pushButton_26">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>120</y>
+     <x>242</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -341,8 +341,8 @@
   <widget class="QPushButton" name="pushButton_21">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>120</y>
+     <x>281</x>
+     <y>140</y>
      <width>41</width>
      <height>31</height>
     </rect>
@@ -365,7 +365,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>150</y>
+     <y>170</y>
      <width>231</width>
      <height>31</height>
     </rect>
@@ -378,8 +378,8 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>120</y>
-     <width>71</width>
+     <y>140</y>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -390,14 +390,27 @@
   <widget class="QPushButton" name="pushButton_29">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>120</y>
-     <width>31</width>
+     <x>4</x>
+     <y>140</y>
+     <width>41</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Shift</string>
+    <string>Caps</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_30">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>50</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Backspace</string>
    </property>
   </widget>
  </widget>

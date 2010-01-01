@@ -5,6 +5,8 @@ taskDialog::taskDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::taskDialog)
 {
+    caps=false;
+    accepted=false;
     ui->setupUi(this);
 }
 
@@ -25,11 +27,6 @@ void taskDialog::changeEvent(QEvent *e)
     }
 }
 
-void taskDialog::on_pushButton_5_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("q"));
-}
-
 QString taskDialog::text()
 {
     return ui->lineEdit->text();
@@ -40,49 +37,218 @@ void taskDialog::on_buttonBox_accepted()
     close();
 }
 
+void taskDialog::on_pushButton_28_clicked()
+{
+    accepted=true;
+    close();
+}
+
+void taskDialog::on_pushButton_5_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("Q"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("q"));
+}
+
 void taskDialog::on_pushButton_6_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("w"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("W"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("w"));
 }
 
 void taskDialog::on_pushButton_7_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("e"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("E"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("e"));
 }
 
 void taskDialog::on_pushButton_8_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("r"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("R"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("r"));
 }
 
 void taskDialog::on_pushButton_9_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("t"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("T"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("t"));
 }
 
 void taskDialog::on_pushButton_10_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("y"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("Y"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("y"));
 }
 
 void taskDialog::on_pushButton_11_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("u"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("U"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("u"));
 }
 
 void taskDialog::on_pushButton_12_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("i"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("I"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("i"));
 }
 
 void taskDialog::on_pushButton_14_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("o"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("O"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("o"));
 }
 
 void taskDialog::on_pushButton_13_clicked()
 {
-    ui->lineEdit->setText(ui->lineEdit->text().append("p"));
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("P"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("p"));
+}
+
+void taskDialog::on_pushButton_15_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("A"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("a"));
+}
+
+void taskDialog::on_pushButton_16_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("S"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("s"));
+}
+
+void taskDialog::on_pushButton_17_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("D"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("d"));
+}
+
+void taskDialog::on_pushButton_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("F"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("f"));
+}
+
+void taskDialog::on_pushButton_18_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("G"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("g"));
+}
+
+void taskDialog::on_pushButton_20_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("H"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("h"));
+}
+
+void taskDialog::on_pushButton_19_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("J"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("j"));
+}
+
+void taskDialog::on_pushButton_2_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("K"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("k"));
+}
+
+void taskDialog::on_pushButton_4_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("L"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("l"));
+}
+
+void taskDialog::on_pushButton_22_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("Z"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("z"));
+}
+
+void taskDialog::on_pushButton_23_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("X"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("x"));
+}
+
+void taskDialog::on_pushButton_24_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("C"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("c"));
+}
+
+void taskDialog::on_pushButton_25_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("V"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("v"));
+}
+
+void taskDialog::on_pushButton_3_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("B"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("b"));
+}
+
+void taskDialog::on_pushButton_26_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("N"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("n"));
+}
+
+void taskDialog::on_pushButton_21_clicked()
+{
+    if (caps)
+        ui->lineEdit->setText(ui->lineEdit->text().append("M"));
+    else
+        ui->lineEdit->setText(ui->lineEdit->text().append("m"));
 }
 
 void taskDialog::on_pushButton_27_clicked()
@@ -90,87 +256,7 @@ void taskDialog::on_pushButton_27_clicked()
     ui->lineEdit->setText(ui->lineEdit->text().append(" "));
 }
 
-void taskDialog::on_pushButton_28_clicked()
+void taskDialog::on_pushButton_29_clicked()
 {
-    close();
-}
-
-void taskDialog::on_pushButton_15_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("a"));
-}
-
-void taskDialog::on_pushButton_16_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("s"));
-}
-
-void taskDialog::on_pushButton_17_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("d"));
-}
-
-void taskDialog::on_pushButton_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("f"));
-}
-
-void taskDialog::on_pushButton_18_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("g"));
-}
-
-void taskDialog::on_pushButton_20_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("h"));
-}
-
-void taskDialog::on_pushButton_19_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("j"));
-}
-
-void taskDialog::on_pushButton_2_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("k"));
-}
-
-void taskDialog::on_pushButton_4_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("l"));
-}
-
-void taskDialog::on_pushButton_22_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("z"));
-}
-
-void taskDialog::on_pushButton_23_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("x"));
-}
-
-void taskDialog::on_pushButton_24_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("c"));
-}
-
-void taskDialog::on_pushButton_25_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("v"));
-}
-
-void taskDialog::on_pushButton_3_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("b"));
-}
-
-void taskDialog::on_pushButton_26_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("n"));
-}
-
-void taskDialog::on_pushButton_21_clicked()
-{
-    ui->lineEdit->setText(ui->lineEdit->text().append("m"));
+    caps=!caps;
 }

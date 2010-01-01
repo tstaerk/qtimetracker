@@ -19,8 +19,11 @@ protected:
 
 private:
     Ui::taskDialog *ui;
+    bool accepted;
+    bool caps;
 
 private slots:
+    void on_pushButton_29_clicked();
     void on_pushButton_21_clicked();
     void on_pushButton_26_clicked();
     void on_pushButton_3_clicked();
