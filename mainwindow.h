@@ -20,10 +20,12 @@ protected:
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
+    QIcon qi_watch[8];
 
 private slots:
     QString save();
     QString load();
+    void prepareicons();
     void on_actionQuit_triggered();
     void slottimer();
     void slotstarttiming();

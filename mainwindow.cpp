@@ -5,6 +5,10 @@
 #include "ui_mainwindow.h"
 #include "taskdialog.h"
 
+/*
+  A task is marked as running using column 3. Column 3 holds the time when the task was started if it is running.
+  */
+
 // Gallery of unmodern art
 static char *ch_new[] = {
 /* columns rows colors chars-per-pixel */
@@ -307,6 +311,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     load();
+    prepareicons();
     timer=new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(slottimer()));
     const QPixmap pm_watch_0(watch_0_xpm);
@@ -338,6 +343,26 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::prepareicons()
+{
+    const QPixmap pm_watch_0(watch_0_xpm);
+    qi_watch[0]=QIcon(pm_watch_0);
+    QPixmap pm_watch(watch_1_xpm);
+    qi_watch[1]=QIcon(pm_watch);
+    pm_watch=QPixmap(watch_2_xpm);
+    qi_watch[2]=QIcon(pm_watch);
+    pm_watch=QPixmap(watch_3_xpm);
+    qi_watch[3]=QIcon(pm_watch);
+    pm_watch=QPixmap(watch_4_xpm);
+    qi_watch[4]=QIcon(pm_watch);
+    pm_watch=QPixmap(watch_5_xpm);
+    qi_watch[5]=QIcon(pm_watch);
+    pm_watch=QPixmap(watch_6_xpm);
+    qi_watch[6]=QIcon(pm_watch);
+    pm_watch=QPixmap(watch_7_xpm);
+    qi_watch[7]=QIcon(pm_watch);
+}
+
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
@@ -366,9 +391,7 @@ void MainWindow::slotaddtask()
 
 void MainWindow::slotstarttiming()
 {
-    const QPixmap pm_watch_0(watch_0_xpm);
-    QIcon qi_watch_0(pm_watch_0);
-    ui->treeWidget->currentItem()->setIcon(1,qi_watch_0);
+    ui->treeWidget->currentItem()->setIcon(1,qi_watch[0]);
     ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
     timer->start(1000);
 }
@@ -383,7 +406,7 @@ void MainWindow::slotstoptiming()
     QDateTime now=QDateTime::currentDateTime();
     int time=laststart.secsTo(now);
     ui->treeWidget->currentItem()->setText(2,QString::number(ui->treeWidget->currentItem()->text(2).toInt()+time));
-
+    ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
 }
 
 void MainWindow::slotdeletetask()
@@ -396,9 +419,8 @@ void MainWindow::slottimer()
 {
     static int turn=0;
     turn++;
-    const QPixmap pm_watch_1(watch_1_xpm);
-    QIcon qi_watch_1(pm_watch_1);
-    ui->treeWidget->currentItem()->setIcon(1,qi_watch_1);
+    if (turn>=8) turn-=8;
+    ui->treeWidget->currentItem()->setIcon(1,qi_watch[turn]);
 }
 
 QString MainWindow::save()
