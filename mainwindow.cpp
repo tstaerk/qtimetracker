@@ -122,6 +122,7 @@ static char *ch_delete[] = {
 "                      ",
 "                      ",
 };
+// watches (c) 2000 by blacky, see http://websvn.kde.org/trunk/KDE/kdepim/ktimetracker/pics/watch-0.xpm?view=log
 static char * watch_0_xpm[] = {
 "15 13 7 1",
 "       c None",
@@ -144,6 +145,161 @@ static char * watch_0_xpm[] = {
 "  $%%%%%%%%%$  ",
 "   $%%%%%%%$   ",
 "    +@#%#@+    "};
+/* XPM */
+static char * watch_1_xpm[] = {
+"15 13 7 1",
+" 	c None",
+".	c #000000",
+"+	c #4A4A4A",
+"@	c #ACACAC",
+"#	c #E9E9E9",
+"$	c #FFFFFF",
+"%	c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %$$$$$$$$.%  ",
+" +$$$$$$$$.$$+ ",
+" @$$$$$$$.$$$@ ",
+" #$$$$$$.$$$$# ",
+".$$$$$$.$$$$$$.",
+" #$$$$$$$$$$$# ",
+" @$$$$$$$$$$$@ ",
+" +$$$$$$$$$$$+ ",
+"  %$$$$$$$$$%  ",
+"   %$$$$$$$%   ",
+"    +@#$#@+    "};
+static char * watch_2_xpm[] = {
+"15 13 7 1",
+" 	c None",
+".	c #000000",
+"+	c #4A4A4A",
+"@	c #ACACAC",
+"#	c #E9E9E9",
+"$	c #FFFFFF",
+"%	c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %$$$$$$$$$%  ",
+" +$$$$$$$$$$$+ ",
+" @$$$$$$$$$$$@ ",
+" #$$$$$$$$$$$# ",
+".$$$$$$........",
+" #$$$$$$$$$$$# ",
+" @$$$$$$$$$$$@ ",
+" +$$$$$$$$$$$+ ",
+"  %$$$$$$$$$%  ",
+"   %$$$$$$$%   ",
+"    +@#$#@+    "};
+static char * watch_3_xpm[] = {
+"15 13 7 1",
+"       c None",
+".      c #000000",
+"+      c #4A4A4A",
+"@      c #ACACAC",
+"#      c #E9E9E9",
+"$      c #FFFFFF",
+"%      c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %$$$$$$$$$%  ",
+" +$$$$$$$$$$$+ ",
+" @$$$$$$$$$$$@ ",
+" #$$$$$$$$$$$# ",
+".$$$$$$.$$$$$$.",
+" #$$$$$$.$$$$# ",
+" @$$$$$$$.$$$@ ",
+" +$$$$$$$$.$$+ ",
+"  %$$$$$$$$.%  ",
+"   %$$$$$$$%   ",
+"    +@#$#@+    "};
+static char * watch_4_xpm[] = {
+"15 13 7 1",
+"       c None",
+".      c #000000",
+"+      c #4A4A4A",
+"@      c #ACACAC",
+"#      c #E9E9E9",
+"$      c #FFFFFF",
+"%      c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %$$$$$$$$$%  ",
+" +$$$$$$$$$$$+ ",
+" @$$$$$$$$$$$@ ",
+" #$$$$$$$$$$$# ",
+".$$$$$$.$$$$$$.",
+" #$$$$$.$$$$$# ",
+" @$$$$$.$$$$$@ ",
+" +$$$$$.$$$$$+ ",
+"  %$$$$.$$$$%  ",
+"   %$$$.$$$%   ",
+"    +@#.#@+    "};
+static char * watch_5_xpm[] = {
+"15 13 7 1",
+"       c None",
+".      c #000000",
+"+      c #4A4A4A",
+"@      c #ACACAC",
+"#      c #E9E9E9",
+"$      c #FFFFFF",
+"%      c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %$$$$$$$$$%  ",
+" +$$$$$$$$$$$+ ",
+" @$$$$$$$$$$$@ ",
+" #$$$$$$$$$$$# ",
+".$$$$$$.$$$$$$.",
+" #$$$$.$$$$$$# ",
+" @$$$.$$$$$$$@ ",
+" +$$.$$$$$$$$+ ",
+"  %.$$$$$$$$%  ",
+"   %$$$$$$$%   ",
+"    +@#$#@+    "};
+static char * watch_6_xpm[] = {
+"15 13 7 1",
+"       c None",
+".      c #000000",
+"+      c #4A4A4A",
+"@      c #ACACAC",
+"#      c #E9E9E9",
+"$      c #FFFFFF",
+"%      c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %$$$$$$$$$%  ",
+" +$$$$$$$$$$$+ ",
+" @$$$$$$$$$$$@ ",
+" #$$$$$$$$$$$# ",
+"........$$$$$$.",
+" #$$$$$$$$$$$# ",
+" @$$$$$$$$$$$@ ",
+" +$$$$$$$$$$$+ ",
+"  %$$$$$$$$$%  ",
+"   %$$$$$$$%   ",
+"    +@#$#@+    "};
+static char * watch_7_xpm[] = {
+"15 13 7 1",
+"       c None",
+".      c #000000",
+"+      c #4A4A4A",
+"@      c #ACACAC",
+"#      c #E9E9E9",
+"$      c #FFFFFF",
+"%      c #989898",
+"    +@#$#@+    ",
+"   %$$$$$$$%   ",
+"  %.$$$$$$$$%  ",
+" +$$.$$$$$$$$+ ",
+" @$$$.$$$$$$$@ ",
+" #$$$$.$$$$$$# ",
+".$$$$$$.$$$$$$.",
+" #$$$$$$$$$$$# ",
+" @$$$$$$$$$$$@ ",
+" +$$$$$$$$$$$+ ",
+"  %$$$$$$$$$%  ",
+"   %$$$$$$$%   ",
+"    +@#$#@+    "};
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -151,6 +307,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     load();
+    timer=new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(slottimer()));
     const QPixmap pm_watch_0(watch_0_xpm);
     QIcon qi_watch_0(pm_watch_0);
     const QPixmap pm_new(ch_new);
@@ -212,10 +370,12 @@ void MainWindow::slotstarttiming()
     QIcon qi_watch_0(pm_watch_0);
     ui->treeWidget->currentItem()->setIcon(1,qi_watch_0);
     ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
+    timer->start(1000);
 }
 
 void MainWindow::slotstoptiming()
 {
+    timer->stop();
     const QPixmap pm_watch_0(watch_0_xpm);
     QIcon qi_watch_0(pm_watch_0);
     ui->treeWidget->currentItem()->setIcon(1,QIcon());
@@ -230,6 +390,15 @@ void MainWindow::slotdeletetask()
 {
     delete(ui->treeWidget->currentItem());
     save();
+}
+
+void MainWindow::slottimer()
+{
+    static int turn=0;
+    turn++;
+    const QPixmap pm_watch_1(watch_1_xpm);
+    QIcon qi_watch_1(pm_watch_1);
+    ui->treeWidget->currentItem()->setIcon(1,qi_watch_1);
 }
 
 QString MainWindow::save()
