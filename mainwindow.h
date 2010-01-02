@@ -25,6 +25,15 @@ private:
 private slots:
     QString save();
     QString load();
+    /** Deliver the index of the task that is running.
+       Only one timer can run at the moment.
+       A task is marked as running if there is a date in column 3.
+       Example: result=2 means the timer has been started for the third task. */
+    int runningtaskindex();
+    /** Deliver how many tasks exist.
+      As long as there are no subtasks, this is trivial, but this will
+      change as soon as we have subtasks. */
+    int taskcount();
     void prepareicons();
     void on_actionQuit_triggered();
     void slottimer();

@@ -380,6 +380,21 @@ void MainWindow::on_actionQuit_triggered()
     close();
 }
 
+int MainWindow::runningtaskindex()
+{
+    int result=-1;
+    for (int i=0; i<taskcount(); i=i+1)
+    {
+        if (!ui->treeWidget->topLevelItem(i)->text(3).isEmpty()) result=i;
+    }
+    return result;
+}
+
+int MainWindow::taskcount()
+{
+    return ui->treeWidget->topLevelItemCount();
+}
+
 void MainWindow::slotaddtask()
 {
     taskDialog* taskdialog=new taskDialog();
@@ -398,15 +413,18 @@ void MainWindow::slotstarttiming()
 
 void MainWindow::slotstoptiming()
 {
-    timer->stop();
-    const QPixmap pm_watch_0(watch_0_xpm);
-    QIcon qi_watch_0(pm_watch_0);
-    ui->treeWidget->currentItem()->setIcon(1,QIcon());
-    QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
-    QDateTime now=QDateTime::currentDateTime();
-    int time=laststart.secsTo(now);
-    ui->treeWidget->currentItem()->setText(2,QString::number(ui->treeWidget->currentItem()->text(2).toInt()+time));
-    ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
+    if (!ui->treeWidget->currentItem()->text(3).isEmpty())
+    { // task is really running
+        timer->stop();
+        const QPixmap pm_watch_0(watch_0_xpm);
+        QIcon qi_watch_0(pm_watch_0);
+        ui->treeWidget->currentItem()->setIcon(1,QIcon());
+        QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
+        QDateTime now=QDateTime::currentDateTime();
+        int time=laststart.secsTo(now);
+        ui->treeWidget->currentItem()->setText(2,QString::number(ui->treeWidget->currentItem()->text(2).toInt()+time));
+        ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
+    }
 }
 
 void MainWindow::slotdeletetask()
@@ -420,7 +438,7 @@ void MainWindow::slottimer()
     static int turn=0;
     turn++;
     if (turn>=8) turn-=8;
-    ui->treeWidget->currentItem()->setIcon(1,qi_watch[turn]);
+    ui->treeWidget->topLevelItem(runningtaskindex())->setIcon(1,qi_watch[turn]);
 }
 
 QString MainWindow::save()
