@@ -40,8 +40,8 @@ private slots:
     void on_pushButton_24_clicked();
     void on_pushButton_23_clicked();
     void on_pushButton_22_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_2_clicked();
+    void on_pb_l_clicked();
+    void on_pb_k_clicked();
     void on_pb_j_clicked();
     void on_pb_h_clicked();
     void on_pb_g_clicked();
