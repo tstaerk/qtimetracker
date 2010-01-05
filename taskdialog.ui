@@ -213,7 +213,7 @@
     </widget>
    </item>
    <item row="3" column="6" colspan="2">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="pb_f">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -226,7 +226,7 @@
     </widget>
    </item>
    <item row="3" column="8" colspan="2">
-    <widget class="QPushButton" name="pushButton_18">
+    <widget class="QPushButton" name="pb_g">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -239,7 +239,7 @@
     </widget>
    </item>
    <item row="3" column="10" colspan="2">
-    <widget class="QPushButton" name="pushButton_20">
+    <widget class="QPushButton" name="pb_h">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -252,7 +252,7 @@
     </widget>
    </item>
    <item row="3" column="12" colspan="2">
-    <widget class="QPushButton" name="pushButton_19">
+    <widget class="QPushButton" name="pb_j">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -435,10 +435,10 @@
   <tabstop>pb_r</tabstop>
   <tabstop>pb_d</tabstop>
   <tabstop>pushButton_4</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_18</tabstop>
-  <tabstop>pushButton_20</tabstop>
-  <tabstop>pushButton_19</tabstop>
+  <tabstop>pb_f</tabstop>
+  <tabstop>pb_g</tabstop>
+  <tabstop>pb_h</tabstop>
+  <tabstop>pb_j</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pb_a</tabstop>
   <tabstop>pushButton_22</tabstop>
