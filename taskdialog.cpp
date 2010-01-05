@@ -118,7 +118,7 @@ void taskDialog::on_pb_p_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("p"));
 }
 
-void taskDialog::on_pushButton_15_clicked()
+void taskDialog::on_pb_a_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("A"));
@@ -126,7 +126,7 @@ void taskDialog::on_pushButton_15_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("a"));
 }
 
-void taskDialog::on_pushButton_16_clicked()
+void taskDialog::on_pb_s_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("S"));
@@ -134,7 +134,7 @@ void taskDialog::on_pushButton_16_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("s"));
 }
 
-void taskDialog::on_pushButton_17_clicked()
+void taskDialog::on_pb_d_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("D"));

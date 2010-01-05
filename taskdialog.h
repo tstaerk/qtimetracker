@@ -46,9 +46,9 @@ private slots:
     void on_pushButton_20_clicked();
     void on_pushButton_18_clicked();
     void on_pushButton_clicked();
-    void on_pushButton_17_clicked();
-    void on_pushButton_16_clicked();
-    void on_pushButton_15_clicked();
+    void on_pb_d_clicked();
+    void on_pb_s_clicked();
+    void on_pb_a_clicked();
     void on_pushButton_28_clicked();
     void on_pushButton_27_clicked();
     void on_pb_p_clicked();
