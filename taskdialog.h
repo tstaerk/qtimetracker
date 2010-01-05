@@ -24,6 +24,12 @@ private:
     bool caps;
 
 private slots:
+    void on_pb_q_clicked();
+    void on_pb_w_clicked();
+    void on_pb_e_clicked();
+    void on_pb_r_clicked();
+    void on_pb_t_clicked();
+    void on_pb_y_clicked();
     void on_pushButton_30_clicked();
     void on_pushButton_31_clicked();
     void on_pushButton_29_clicked();
@@ -49,13 +55,6 @@ private slots:
     void on_pushButton_14_clicked();
     void on_pushButton_12_clicked();
     void on_pushButton_11_clicked();
-    void on_pushButton_10_clicked();
-    void on_pushButton_9_clicked();
-    void on_pushButton_8_clicked();
-    void on_pushButton_7_clicked();
-    void on_pushButton_6_clicked();
-    void on_buttonBox_accepted();
-    void on_pushButton_5_clicked();
 };
 
 #endif // TASKDIALOG_H

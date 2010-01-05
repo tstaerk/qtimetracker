@@ -32,18 +32,13 @@ QString taskDialog::text()
     return ui->lineEdit->text();
 }
 
-void taskDialog::on_buttonBox_accepted()
-{
-    close();
-}
-
 void taskDialog::on_pushButton_28_clicked()
 {
     accepted=true;
     close();
 }
 
-void taskDialog::on_pushButton_5_clicked()
+void taskDialog::on_pb_q_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("Q"));
@@ -51,7 +46,7 @@ void taskDialog::on_pushButton_5_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("q"));
 }
 
-void taskDialog::on_pushButton_6_clicked()
+void taskDialog::on_pb_w_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("W"));
@@ -59,7 +54,7 @@ void taskDialog::on_pushButton_6_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("w"));
 }
 
-void taskDialog::on_pushButton_7_clicked()
+void taskDialog::on_pb_e_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("E"));
@@ -67,7 +62,7 @@ void taskDialog::on_pushButton_7_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("e"));
 }
 
-void taskDialog::on_pushButton_8_clicked()
+void taskDialog::on_pb_r_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("R"));
@@ -75,7 +70,7 @@ void taskDialog::on_pushButton_8_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("r"));
 }
 
-void taskDialog::on_pushButton_9_clicked()
+void taskDialog::on_pb_t_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("T"));
@@ -83,7 +78,7 @@ void taskDialog::on_pushButton_9_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("t"));
 }
 
-void taskDialog::on_pushButton_10_clicked()
+void taskDialog::on_pb_y_clicked()
 {
     if (caps)
         ui->lineEdit->setText(ui->lineEdit->text().append("Y"));
