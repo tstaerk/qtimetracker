@@ -51,10 +51,10 @@ private slots:
     void on_pushButton_15_clicked();
     void on_pushButton_28_clicked();
     void on_pushButton_27_clicked();
-    void on_pushButton_13_clicked();
-    void on_pushButton_14_clicked();
-    void on_pushButton_12_clicked();
-    void on_pushButton_11_clicked();
+    void on_pb_p_clicked();
+    void on_pb_o_clicked();
+    void on_pb_i_clicked();
+    void on_pb_u_clicked();
 };
 
 #endif // TASKDIALOG_H
