@@ -30,9 +30,9 @@ private slots:
     void on_pb_r_clicked();
     void on_pb_t_clicked();
     void on_pb_y_clicked();
-    void on_pushButton_30_clicked();
-    void on_pushButton_31_clicked();
-    void on_pushButton_29_clicked();
+    void on_pb_backspace_clicked();
+    void on_pb_esc_clicked();
+    void on_pb_caps_clicked();
     void on_pb_m_clicked();
     void on_pb_n_clicked();
     void on_pb_b_clicked();
@@ -49,8 +49,8 @@ private slots:
     void on_pb_d_clicked();
     void on_pb_s_clicked();
     void on_pb_a_clicked();
-    void on_pushButton_28_clicked();
-    void on_pushButton_27_clicked();
+    void on_pb_enter_clicked();
+    void on_pb_space_clicked();
     void on_pb_p_clicked();
     void on_pb_o_clicked();
     void on_pb_i_clicked();

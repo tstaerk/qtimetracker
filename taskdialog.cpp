@@ -32,7 +32,7 @@ QString taskDialog::text()
     return ui->lineEdit->text();
 }
 
-void taskDialog::on_pushButton_28_clicked()
+void taskDialog::on_pb_enter_clicked()
 {
     accepted=true;
     close();
@@ -246,17 +246,17 @@ void taskDialog::on_pb_m_clicked()
         ui->lineEdit->setText(ui->lineEdit->text().append("m"));
 }
 
-void taskDialog::on_pushButton_27_clicked()
+void taskDialog::on_pb_space_clicked()
 {
     ui->lineEdit->setText(ui->lineEdit->text().append(" "));
 }
 
-void taskDialog::on_pushButton_29_clicked()
+void taskDialog::on_pb_caps_clicked()
 {
     caps=!caps;
 }
 
-void taskDialog::on_pushButton_31_clicked()
+void taskDialog::on_pb_esc_clicked()
 {
     accepted=false;
     close();
@@ -267,7 +267,7 @@ bool taskDialog::hasaccepted()
     return accepted;
 }
 
-void taskDialog::on_pushButton_30_clicked()
+void taskDialog::on_pb_backspace_clicked()
 {
     ui->lineEdit->setText(ui->lineEdit->text().left(ui->lineEdit->text().length()-1)); // Uni... what?
 }

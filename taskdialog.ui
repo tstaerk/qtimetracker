@@ -18,7 +18,7 @@
     <widget class="QLineEdit" name="lineEdit"/>
    </item>
    <item row="1" column="0">
-    <widget class="QPushButton" name="pushButton_31">
+    <widget class="QPushButton" name="pb_esc">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -31,7 +31,7 @@
     </widget>
    </item>
    <item row="1" column="15" colspan="4">
-    <widget class="QPushButton" name="pushButton_30">
+    <widget class="QPushButton" name="pb_backspace">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -291,7 +291,7 @@
     </widget>
    </item>
    <item row="4" column="0">
-    <widget class="QPushButton" name="pushButton_29">
+    <widget class="QPushButton" name="pb_caps">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -395,7 +395,7 @@
     </widget>
    </item>
    <item row="4" column="15" colspan="4">
-    <widget class="QPushButton" name="pushButton_28">
+    <widget class="QPushButton" name="pb_enter">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -408,7 +408,7 @@
     </widget>
    </item>
    <item row="5" column="4" colspan="13">
-    <widget class="QPushButton" name="pushButton_27">
+    <widget class="QPushButton" name="pb_space">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -424,7 +424,7 @@
  </widget>
  <tabstops>
   <tabstop>lineEdit</tabstop>
-  <tabstop>pushButton_28</tabstop>
+  <tabstop>pb_enter</tabstop>
   <tabstop>pb_e</tabstop>
   <tabstop>pb_t</tabstop>
   <tabstop>pb_y</tabstop>
@@ -449,11 +449,11 @@
   <tabstop>pb_n</tabstop>
   <tabstop>pb_m</tabstop>
   <tabstop>pb_w</tabstop>
-  <tabstop>pushButton_27</tabstop>
+  <tabstop>pb_space</tabstop>
   <tabstop>pb_s</tabstop>
-  <tabstop>pushButton_29</tabstop>
-  <tabstop>pushButton_30</tabstop>
-  <tabstop>pushButton_31</tabstop>
+  <tabstop>pb_caps</tabstop>
+  <tabstop>pb_backspace</tabstop>
+  <tabstop>pb_esc</tabstop>
   <tabstop>pb_q</tabstop>
  </tabstops>
  <resources/>
