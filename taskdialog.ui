@@ -30,7 +30,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="15" colspan="4">
+   <item row="1" column="15" colspan="3">
     <widget class="QPushButton" name="pb_backspace">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -134,7 +134,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="13" colspan="3">
+   <item row="2" column="13" colspan="2">
     <widget class="QPushButton" name="pb_i">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -147,7 +147,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="16" colspan="2">
+   <item row="2" column="15" colspan="2">
     <widget class="QPushButton" name="pb_o">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -160,7 +160,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="18">
+   <item row="2" column="17">
     <widget class="QPushButton" name="pb_p">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -264,7 +264,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="14" colspan="3">
+   <item row="3" column="14" colspan="2">
     <widget class="QPushButton" name="pb_k">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -277,7 +277,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="17" colspan="2">
+   <item row="3" column="16" colspan="2">
     <widget class="QPushButton" name="pb_l">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -394,7 +394,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="15" colspan="4">
+   <item row="4" column="15" colspan="3">
     <widget class="QPushButton" name="pb_enter">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
