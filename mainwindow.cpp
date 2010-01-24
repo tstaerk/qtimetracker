@@ -335,7 +335,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->setColumnHidden(3,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
     item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8));
-    item1->setText(2, QApplication::translate("MainWindow", "time", 0, QApplication::UnicodeUTF8));
+    item1->setText(2, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8));
 }
 
 MainWindow::~MainWindow()
@@ -413,17 +413,13 @@ void MainWindow::slotstarttiming()
 
 int timestringtoseconds(QString timestring)
 {
-    int result=0;
-    timestring.replace(" sec","");
-    return timestring.toInt();
+    QTime qtime1=QTime::fromString(timestring);
+    return qtime1.hour()*3600+qtime1.minute()*60+qtime1.second();
 }
 
 QString timestring(int seconds)
 {
-    QString result;
-    result=QString::number(seconds);
-    result.append(" sec");
-    return result;
+    return QTime((int)(seconds/3600),(int)(seconds/60),seconds%60).toString();
 }
 
 void MainWindow::slotstoptiming()
