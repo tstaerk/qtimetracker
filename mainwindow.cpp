@@ -411,6 +411,21 @@ void MainWindow::slotstarttiming()
     timer->start(1000);
 }
 
+int timestringtoseconds(QString timestring)
+{
+    int result=0;
+    timestring.replace(" sec","");
+    return timestring.toInt();
+}
+
+QString timestring(int seconds)
+{
+    QString result;
+    result=QString::number(seconds);
+    result.append(" sec");
+    return result;
+}
+
 void MainWindow::slotstoptiming()
 {
     if (!ui->treeWidget->currentItem()->text(3).isEmpty())
@@ -422,7 +437,7 @@ void MainWindow::slotstoptiming()
         QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
         QDateTime now=QDateTime::currentDateTime();
         int time=laststart.secsTo(now);
-        ui->treeWidget->currentItem()->setText(2,QString::number(ui->treeWidget->currentItem()->text(2).toInt()+time));
+        ui->treeWidget->currentItem()->setText(2,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(2))+time));
         ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
     }
 }
