@@ -366,12 +366,13 @@ void MainWindow::prepareicons()
 void MainWindow::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
+    switch (e->type())
+    {
+        case QEvent::LanguageChange:
+            ui->retranslateUi(this);
+            break;
+        default:
+            break;
     }
 }
 
@@ -463,6 +464,7 @@ QString MainWindow::save()
         for (i=0; i<ui->treeWidget->topLevelItemCount(); i=i+1)
         {
             file1.write(ui->treeWidget->topLevelItem(i)->text(0).append("\n").toUtf8());
+            file1.write(ui->treeWidget->topLevelItem(i)->text(2).append("\n").toUtf8());
         }
         file1.close();
         ui->statusBar->showMessage(QString("saved tasks:").append(QString::number((double)i)));
@@ -484,6 +486,9 @@ QString MainWindow::load()
             line=file1.readLine();
             line.replace("\n","");
             ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString(line))));
+            line=file1.readLine();
+            line.replace("\n","");
+            ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(2,line);
             i++;
         }
         file1.close();
