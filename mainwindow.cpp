@@ -437,6 +437,7 @@ void MainWindow::slotstoptiming()
         ui->treeWidget->currentItem()->setText(2,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(2))+time));
         ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
     }
+    save();
 }
 
 void MainWindow::slotdeletetask()
