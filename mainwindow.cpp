@@ -340,6 +340,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    slotstoptiming();
     delete ui;
 }
 
