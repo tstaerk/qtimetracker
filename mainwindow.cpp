@@ -449,8 +449,7 @@ void MainWindow::slotdeletetask()
 void MainWindow::slottimer()
 {
     static int turn=0;
-    turn++;
-    if (turn>=8) turn-=8;
+    if (++turn>=8) turn-=8;
     ui->treeWidget->topLevelItem(runningtaskindex())->setIcon(1,qi_watch[turn]);
 }
 
