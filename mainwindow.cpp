@@ -7,6 +7,7 @@
 
 /*
   A task is marked as running using column 3. Column 3 holds the time when the task was started if it is running.
+  Column 4 holds the time of the task when it was started.
   */
 
 // Gallery of unmodern art
@@ -331,8 +332,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->header()->resizeSection(1,20);
     ui->treeWidget->header()->resizeSection(2,50);
-    ui->treeWidget->setColumnCount(4);
+    ui->treeWidget->setColumnCount(5);
     ui->treeWidget->setColumnHidden(3,true);
+    ui->treeWidget->setColumnHidden(4,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
     item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8));
     item1->setText(2, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8));
@@ -410,6 +412,7 @@ void MainWindow::slotstarttiming()
 {
     ui->treeWidget->currentItem()->setIcon(1,qi_watch[0]);
     ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
+    ui->treeWidget->currentItem()->setText(4,ui->treeWidget->currentItem()->text(2));
     timer->start(1000);
 }
 
@@ -435,7 +438,6 @@ void MainWindow::slotstoptiming()
         QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
         QDateTime now=QDateTime::currentDateTime();
         int time=laststart.secsTo(now);
-        ui->treeWidget->currentItem()->setText(2,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(2))+time));
         ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
     }
     save();
@@ -452,6 +454,7 @@ void MainWindow::slottimer()
     static int turn=0;
     if (++turn>=8) turn-=8;
     ui->treeWidget->topLevelItem(runningtaskindex())->setIcon(1,qi_watch[turn]);
+    ui->treeWidget->currentItem()->setText(2,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(4))+QDateTime::fromString(ui->treeWidget->currentItem()->text(3)).secsTo(QDateTime::currentDateTime())));
 }
 
 QString MainWindow::save()
