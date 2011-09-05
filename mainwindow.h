@@ -41,6 +41,10 @@ private slots:
     void slotstoptiming();
     void slotaddtask();
     void slotdeletetask();
+    void on_btn_addtask_clicked();
+    void on_btn_starttimer_clicked();
+    void on_btn_stoptimer_clicked();
+    void on_btn_deletetask_clicked();
 };
 
 #endif // MAINWINDOW_H

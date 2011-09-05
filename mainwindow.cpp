@@ -319,16 +319,16 @@ MainWindow::MainWindow(QWidget *parent) :
     QIcon qi_watch_0(pm_watch_0);
     const QPixmap pm_new(ch_new);
     QIcon qi_new(pm_new);
-    ui->toolBar->addAction(qi_new,QString("Add a task"),this,SLOT(slotaddtask()));
+    ui->btn_addtask->setIcon(qi_new);
     const QPixmap pm_start(ch_start);
     QIcon qi_start(pm_start);
-    ui->toolBar->addAction(qi_start,QString("Start timing"),this,SLOT(slotstarttiming()));
+    ui->btn_starttimer->setIcon(qi_start);
     const QPixmap pm_stop(ch_stop);
     QIcon qi_stop(pm_stop);
-    ui->toolBar->addAction(qi_stop,QString("Stop timing"),this,SLOT(slotstoptiming()));
+    ui->btn_stoptimer->setIcon(qi_stop);
     const QPixmap pm_delete(ch_delete);
     QIcon qi_delete(pm_delete);
-    ui->toolBar->addAction(qi_delete,QString("Delete task"),this,SLOT(slotdeletetask()));
+    ui->btn_deletetask->setIcon(qi_delete);
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->header()->resizeSection(1,20);
     ui->treeWidget->header()->resizeSection(2,50);
@@ -498,4 +498,24 @@ QString MainWindow::load()
         file1.close();
     }
     return err;
+}
+
+void MainWindow::on_btn_addtask_clicked()
+{
+    slotaddtask();
+}
+
+void MainWindow::on_btn_starttimer_clicked()
+{
+    slotstarttiming();
+}
+
+void MainWindow::on_btn_stoptimer_clicked()
+{
+    slotstoptiming();
+}
+
+void MainWindow::on_btn_deletetask_clicked()
+{
+    slotdeletetask();
 }
