@@ -445,6 +445,7 @@ void MainWindow::slotstoptiming()
 
 void MainWindow::slotdeletetask()
 {
+    slotstoptiming();
     delete(ui->treeWidget->currentItem());
     save();
 }
