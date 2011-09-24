@@ -1,6 +1,7 @@
 #include <QInputDialog>
 #include <QDateTime>
 #include <QFile>
+#include <QMessageBox>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "taskdialog.h"
@@ -410,10 +411,14 @@ void MainWindow::slotaddtask()
 
 void MainWindow::slotstarttiming()
 {
-    ui->treeWidget->currentItem()->setIcon(1,qi_watch[0]);
-    ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
-    ui->treeWidget->currentItem()->setText(4,ui->treeWidget->currentItem()->text(2));
-    timer->start(1000);
+    if (ui->treeWidget->currentItem())
+    {
+        ui->treeWidget->currentItem()->setIcon(1,qi_watch[0]);
+        ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
+        ui->treeWidget->currentItem()->setText(4,ui->treeWidget->currentItem()->text(2));
+        timer->start(1000);
+    }
+    else QMessageBox::information(0,"Info","First select a task that you want to start timing for.");
 }
 
 int timestringtoseconds(QString timestring)
@@ -429,18 +434,21 @@ QString timestring(int seconds)
 
 void MainWindow::slotstoptiming()
 {
-    if (!ui->treeWidget->currentItem()->text(3).isEmpty())
-    { // task is really running
-        timer->stop();
-        const QPixmap pm_watch_0(watch_0_xpm);
-        QIcon qi_watch_0(pm_watch_0);
-        ui->treeWidget->currentItem()->setIcon(1,QIcon());
-        QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
-        QDateTime now=QDateTime::currentDateTime();
-        int time=laststart.secsTo(now);
-        ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
+    if (ui->treeWidget->currentItem())
+    {
+        if (!ui->treeWidget->currentItem()->text(3).isEmpty())
+        { // task is really running
+            timer->stop();
+            const QPixmap pm_watch_0(watch_0_xpm);
+            QIcon qi_watch_0(pm_watch_0);
+            ui->treeWidget->currentItem()->setIcon(1,QIcon());
+            QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
+            QDateTime now=QDateTime::currentDateTime();
+            int time=laststart.secsTo(now);
+            ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
+        }
+        save();
     }
-    save();
 }
 
 void MainWindow::slotdeletetask()
