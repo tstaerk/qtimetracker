@@ -1,3 +1,7 @@
 qtimetracker tracks the time you spend on tasks during your day.
 
 First you create a todo-list. Whenever you change tasks, you click on the new one and a timer starts running.
+
+BUILD
+To build qtimetracker under Linux issue the command
+ qmake && make -j8 && make install
