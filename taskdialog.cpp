@@ -1,5 +1,6 @@
 /*
- * Copyright 2010 by Thorsten Staerk
+ * Copyright 2010-2013 by Thorsten Staerk
+ * http://www.staerk.de/thorsten
  *
  * This file is part of qtimetracker.
  *
