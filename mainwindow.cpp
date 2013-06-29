@@ -356,8 +356,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    load();
     prepareicons();
+    load();
     timer=new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(slottimer()));
     const QPixmap pm_watch_0(watch_0_xpm);
@@ -528,6 +528,11 @@ QString MainWindow::save()
         {
             file1.write(ui->treeWidget->topLevelItem(i)->text(0).append("\n").toUtf8());
             file1.write(ui->treeWidget->topLevelItem(i)->text(2).append("\n").toUtf8());
+            if (ui->treeWidget->topLevelItem(i)->icon(5).isNull())
+            {
+                file1.write("incomplete\n");
+            }
+            else file1.write("complete\n");
         }
         file1.close();
         ui->statusBar->showMessage(QString("saved tasks:").append(QString::number((double)i)));
@@ -543,6 +548,7 @@ QString MainWindow::load()
     else
     {
         QByteArray line;
+        QString qs;
         int i=0;
         while (!file1.atEnd())
         {
@@ -552,6 +558,9 @@ QString MainWindow::load()
             line=file1.readLine();
             line.replace("\n","");
             ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(2,line);
+            qs=file1.readLine();
+            if (!qs.contains("incomplete"))
+                ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(5,qi_complete);
             i++;
         }
         file1.close();
@@ -591,4 +600,5 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
     {
         ui->treeWidget->currentItem()->setIcon(5,QIcon());
     }
+    save();
 }
