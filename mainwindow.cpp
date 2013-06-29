@@ -374,8 +374,6 @@ MainWindow::MainWindow(QWidget *parent) :
     const QPixmap pm_delete(ch_delete);
     QIcon qi_delete(pm_delete);
     ui->btn_deletetask->setIcon(qi_delete);
-    const QPixmap pm_complete(ch_complete);
-    QIcon qi_complete(pm_complete);
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->resizeColumnToContents(2);
     ui->treeWidget->header()->resizeSection(1,20);
