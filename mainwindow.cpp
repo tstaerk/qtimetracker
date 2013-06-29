@@ -352,9 +352,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QIcon qi_delete(pm_delete);
     ui->btn_deletetask->setIcon(qi_delete);
     ui->treeWidget->resizeColumnToContents(0);
+    ui->treeWidget->resizeColumnToContents(2);
     ui->treeWidget->header()->resizeSection(1,20);
-    ui->treeWidget->header()->resizeSection(2,50);
-    ui->treeWidget->setColumnCount(5);
+    ui->treeWidget->setColumnCount(6);
     ui->treeWidget->setColumnHidden(3,true);
     ui->treeWidget->setColumnHidden(4,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
@@ -363,6 +363,7 @@ MainWindow::MainWindow(QWidget *parent) :
     item1->setText(2, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 2: time col
     // col 3: last start time of task, e.g. Sunday 11:45 (hidden)
     // col 4: last content of col 2 before start, e.g. 00:00:19 (hidden)
+    item1->setText(5, QApplication::translate("MainWindow", "completed", 0, QApplication::UnicodeUTF8)); // col 5: completed
 }
 
 MainWindow::~MainWindow()
@@ -551,4 +552,10 @@ void MainWindow::on_btn_stoptimer_clicked()
 void MainWindow::on_btn_deletetask_clicked()
 {
     slotdeletetask();
+}
+
+void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
+{
+    qDebug() << "You clicked onto an intem in the tree widget";
+    qDebug() << "you clicked in column " << index.column();
 }

@@ -54,7 +54,7 @@
        <bool>true</bool>
       </property>
       <property name="columnCount">
-       <number>3</number>
+       <number>4</number>
       </property>
       <column>
        <property name="text">
@@ -69,6 +69,11 @@
       <column>
        <property name="text">
         <string>time</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>completed</string>
        </property>
       </column>
      </widget>
