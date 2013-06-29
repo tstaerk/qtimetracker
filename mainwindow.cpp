@@ -149,6 +149,29 @@ static char *ch_delete[] = {
 "                      ",
 "                      ",
 };
+static char* ch_complete[] =  {
+        "15 13 7 1",
+        "       c None",
+        ".      c #000000",
+        "+      c #009000",
+        "@      c #ACACAC",
+        "#      c #E9E9E9",
+        "$      c #989898",
+        "%      c #FFFFFF",
+        "               ",
+        "              +",
+        "             ++",
+        "           +++ ",
+        "          +++  ",
+        "         +++   ",
+        "        +++    ",
+        "       +++     ",
+        "+     +++      ",
+        " ++  +++       ",
+        "  +++++        ",
+        "   +++         ",
+        "    +          "};
+
 // watches (c) 2000 by blacky, see http://websvn.kde.org/trunk/KDE/kdepim/ktimetracker/pics/watch-0.xpm?view=log
 static char * watch_0_xpm[] = {
 "15 13 7 1",
@@ -351,6 +374,8 @@ MainWindow::MainWindow(QWidget *parent) :
     const QPixmap pm_delete(ch_delete);
     QIcon qi_delete(pm_delete);
     ui->btn_deletetask->setIcon(qi_delete);
+    const QPixmap pm_complete(ch_complete);
+    QIcon qi_complete(pm_complete);
     ui->treeWidget->resizeColumnToContents(0);
     ui->treeWidget->resizeColumnToContents(2);
     ui->treeWidget->header()->resizeSection(1,20);
@@ -390,6 +415,8 @@ void MainWindow::prepareicons()
     qi_watch[6]=QIcon(pm_watch);
     pm_watch=QPixmap(watch_7_xpm);
     qi_watch[7]=QIcon(pm_watch);
+    QPixmap pm_complete=QPixmap(ch_complete);
+    qi_complete=QIcon(pm_complete);
 }
 
 void MainWindow::changeEvent(QEvent *e)
@@ -558,4 +585,5 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
 {
     qDebug() << "You clicked onto an intem in the tree widget";
     qDebug() << "you clicked in column " << index.column();
+    ui->treeWidget->currentItem()->setIcon(5,qi_complete);
 }

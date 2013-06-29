@@ -42,6 +42,7 @@ private:
     Ui::MainWindow *ui;
     QTimer *timer;
     QIcon qi_watch[8];
+    QIcon qi_complete;
 
 private slots:
     QString save();
