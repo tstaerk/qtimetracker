@@ -357,8 +357,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->setColumnHidden(3,true);
     ui->treeWidget->setColumnHidden(4,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
-    item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8));
-    item1->setText(2, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8));
+    // col 0: task name
+    item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 1: timer icon
+    item1->setText(2, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 2: time col
+    // col 3: last start of task (hidden)
+    // col 4: (hidden)
 }
 
 MainWindow::~MainWindow()
