@@ -548,7 +548,6 @@ QString MainWindow::load()
     else
     {
         QByteArray line;
-        QString qs;
         int i=0;
         while (!file1.atEnd())
         {
@@ -558,9 +557,8 @@ QString MainWindow::load()
             line=file1.readLine();
             line.replace("\n","");
             ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(2,line);
-            qs=file1.readLine();
-            if (!qs.contains("incomplete"))
-                ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(5,qi_complete);
+            line=file1.readLine();
+            if (line=="complete\n") ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(5,qi_complete);
             i++;
         }
         file1.close();
