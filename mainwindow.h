@@ -74,6 +74,7 @@ private slots:
     void on_btn_stoptimer_clicked();
     void on_btn_deletetask_clicked();
     void on_treeWidget_clicked(const QModelIndex &index);
+    void on_treeWidget_doubleClicked(const QModelIndex &index);
 };
 
 #endif // MAINWINDOW_H

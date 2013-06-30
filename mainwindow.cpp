@@ -375,8 +375,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QIcon qi_delete(pm_delete);
     ui->btn_deletetask->setIcon(qi_delete);
     ui->treeWidget->resizeColumnToContents(coltaskname);
-    ui->treeWidget->resizeColumnToContents(coltime);
     ui->treeWidget->header()->resizeSection(coltimericon,20);
+    ui->treeWidget->header()->resizeSection(coltime,120);
     ui->treeWidget->setColumnCount(6);
     ui->treeWidget->setColumnHidden(collaststart,true);
     ui->treeWidget->setColumnHidden(collasttime,true);
@@ -459,6 +459,17 @@ void MainWindow::slotaddtask()
     ui->treeWidget->resizeColumnToContents(coltaskname);
 }
 
+int timestringtoseconds(QString timestring)
+{
+    QTime qtime1=QTime::fromString(timestring);
+    return qtime1.hour()*3600+qtime1.minute()*60+qtime1.second();
+}
+
+QString timestring(int seconds)
+{
+    return QTime((int)(seconds/3600),(int)(seconds/60),seconds%60).toString();
+}
+
 void MainWindow::slotstarttiming()
 {
     if (ui->treeWidget->currentItem())
@@ -469,17 +480,6 @@ void MainWindow::slotstarttiming()
         timer->start(1000);
     }
     else QMessageBox::information(0,"Info","First select a task that you want to start timing for.");
-}
-
-int timestringtoseconds(QString timestring)
-{
-    QTime qtime1=QTime::fromString(timestring);
-    return qtime1.hour()*3600+qtime1.minute()*60+qtime1.second();
-}
-
-QString timestring(int seconds)
-{
-    return QTime((int)(seconds/3600),(int)(seconds/60),seconds%60).toString();
 }
 
 void MainWindow::slotstoptiming()
@@ -602,4 +602,11 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
         }
         save();
     }
+}
+
+void MainWindow::on_treeWidget_doubleClicked(const QModelIndex &index)
+{
+    qDebug() << "You double-clicked onto an intem in the tree widget";
+    if (runningtaskindex()==-1) slotstarttiming();
+    else slotstoptiming();
 }
