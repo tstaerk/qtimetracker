@@ -43,6 +43,12 @@ private:
     QTimer *timer;
     QIcon qi_watch[8];
     QIcon qi_complete;
+    static const int coltaskname=0;
+    static const int coltimericon=1;
+    static const int coltime=2;
+    static const int collaststart=3;
+    static const int collasttime=4;
+    static const int colcomplete=5;
 
 private slots:
     QString save();

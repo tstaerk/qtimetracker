@@ -374,19 +374,19 @@ MainWindow::MainWindow(QWidget *parent) :
     const QPixmap pm_delete(ch_delete);
     QIcon qi_delete(pm_delete);
     ui->btn_deletetask->setIcon(qi_delete);
-    ui->treeWidget->resizeColumnToContents(0);
-    ui->treeWidget->resizeColumnToContents(2);
-    ui->treeWidget->header()->resizeSection(1,20);
+    ui->treeWidget->resizeColumnToContents(coltaskname);
+    ui->treeWidget->resizeColumnToContents(coltime);
+    ui->treeWidget->header()->resizeSection(coltimericon,20);
     ui->treeWidget->setColumnCount(6);
-    ui->treeWidget->setColumnHidden(3,true);
-    ui->treeWidget->setColumnHidden(4,true);
+    ui->treeWidget->setColumnHidden(collaststart,true);
+    ui->treeWidget->setColumnHidden(collasttime,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
     // col 0: task name
-    item1->setText(1, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 1: timer icon
-    item1->setText(2, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 2: time col
+    item1->setText(coltimericon, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 1: timer icon
+    item1->setText(coltime, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 2: time col
     // col 3: last start time of task, e.g. Sunday 11:45 (hidden)
     // col 4: last content of col 2 before start, e.g. 00:00:19 (hidden)
-    item1->setText(5, QApplication::translate("MainWindow", "completed", 0, QApplication::UnicodeUTF8)); // col 5: completed
+    item1->setText(colcomplete, QApplication::translate("MainWindow", "completed", 0, QApplication::UnicodeUTF8)); // col 5: completed
 }
 
 MainWindow::~MainWindow()
@@ -440,7 +440,7 @@ int MainWindow::runningtaskindex()
     int result=-1;
     for (int i=0; i<taskcount(); i=i+1)
     {
-        if (!ui->treeWidget->topLevelItem(i)->text(3).isEmpty()) result=i;
+        if (!ui->treeWidget->topLevelItem(i)->text(collaststart).isEmpty()) result=i;
     }
     return result;
 }
@@ -456,16 +456,16 @@ void MainWindow::slotaddtask()
     taskdialog->exec();
     if (taskdialog->hasaccepted()) ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskdialog->text())));
     save();
-    ui->treeWidget->resizeColumnToContents(0);
+    ui->treeWidget->resizeColumnToContents(coltaskname);
 }
 
 void MainWindow::slotstarttiming()
 {
     if (ui->treeWidget->currentItem())
     {
-        ui->treeWidget->currentItem()->setIcon(1,qi_watch[0]);
-        ui->treeWidget->currentItem()->setText(3,QDateTime::currentDateTime().toString());
-        ui->treeWidget->currentItem()->setText(4,ui->treeWidget->currentItem()->text(2));
+        ui->treeWidget->currentItem()->setIcon(coltimericon,qi_watch[0]);
+        ui->treeWidget->currentItem()->setText(collaststart,QDateTime::currentDateTime().toString());
+        ui->treeWidget->currentItem()->setText(collasttime,ui->treeWidget->currentItem()->text(2));
         timer->start(1000);
     }
     else QMessageBox::information(0,"Info","First select a task that you want to start timing for.");
@@ -486,16 +486,16 @@ void MainWindow::slotstoptiming()
 {
     if (ui->treeWidget->currentItem())
     {
-        if (!ui->treeWidget->currentItem()->text(3).isEmpty())
+        if (!ui->treeWidget->currentItem()->text(collaststart).isEmpty())
         { // task is really running
             timer->stop();
             const QPixmap pm_watch_0(watch_0_xpm);
             QIcon qi_watch_0(pm_watch_0);
-            ui->treeWidget->currentItem()->setIcon(1,QIcon());
-            QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(3));
+            ui->treeWidget->currentItem()->setIcon(coltimericon,QIcon());
+            QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(collaststart));
             QDateTime now=QDateTime::currentDateTime();
             int time=laststart.secsTo(now);
-            ui->treeWidget->currentItem()->setText(3,QString()); // mark task as not running
+            ui->treeWidget->currentItem()->setText(collaststart,QString()); // mark task as not running
         }
         save();
     }
@@ -512,8 +512,8 @@ void MainWindow::slottimer()
 {
     static int turn=0;
     if (++turn>=8) turn-=8;
-    ui->treeWidget->topLevelItem(runningtaskindex())->setIcon(1,qi_watch[turn]);
-    ui->treeWidget->currentItem()->setText(2,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(4))+QDateTime::fromString(ui->treeWidget->currentItem()->text(3)).secsTo(QDateTime::currentDateTime())));
+    ui->treeWidget->topLevelItem(runningtaskindex())->setIcon(coltimericon,qi_watch[turn]);
+    ui->treeWidget->currentItem()->setText(coltime,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(collasttime))+QDateTime::fromString(ui->treeWidget->currentItem()->text(collaststart)).secsTo(QDateTime::currentDateTime())));
 }
 
 QString MainWindow::save()
@@ -526,9 +526,9 @@ QString MainWindow::save()
     {
         for (i=0; i<ui->treeWidget->topLevelItemCount(); i=i+1)
         {
-            file1.write(ui->treeWidget->topLevelItem(i)->text(0).append("\n").toUtf8());
-            file1.write(ui->treeWidget->topLevelItem(i)->text(2).append("\n").toUtf8());
-            if (ui->treeWidget->topLevelItem(i)->icon(5).isNull())
+            file1.write(ui->treeWidget->topLevelItem(i)->text(coltaskname).append("\n").toUtf8());
+            file1.write(ui->treeWidget->topLevelItem(i)->text(coltime).append("\n").toUtf8());
+            if (ui->treeWidget->topLevelItem(i)->icon(colcomplete).isNull())
             {
                 file1.write("incomplete\n");
             }
@@ -556,9 +556,9 @@ QString MainWindow::load()
             ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString(line))));
             line=file1.readLine();
             line.replace("\n","");
-            ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(2,line);
+            ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltime,line);
             line=file1.readLine();
-            if (line=="complete\n") ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(5,qi_complete);
+            if (line=="complete\n") ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(colcomplete,qi_complete);
             i++;
         }
         file1.close();
@@ -590,13 +590,16 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
 {
     qDebug() << "You clicked onto an intem in the tree widget";
     qDebug() << "you clicked in column " << index.column();
-    if (ui->treeWidget->currentItem()->icon(5).isNull())
+    if (index.column()==colcomplete)
     {
-        ui->treeWidget->currentItem()->setIcon(5,qi_complete);
+        if (ui->treeWidget->currentItem()->icon(colcomplete).isNull())
+        {
+            ui->treeWidget->currentItem()->setIcon(colcomplete,qi_complete);
+        }
+        else
+        {
+            ui->treeWidget->currentItem()->setIcon(colcomplete,QIcon());
+        }
+        save();
     }
-    else
-    {
-        ui->treeWidget->currentItem()->setIcon(5,QIcon());
-    }
-    save();
 }
