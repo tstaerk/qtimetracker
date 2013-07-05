@@ -513,7 +513,7 @@ void MainWindow::slottimer()
     static int turn=0;
     if (++turn>=8) turn-=8;
     ui->treeWidget->topLevelItem(runningtaskindex())->setIcon(coltimericon,qi_watch[turn]);
-    ui->treeWidget->currentItem()->setText(coltime,timestring(timestringtoseconds(ui->treeWidget->currentItem()->text(collasttime))+QDateTime::fromString(ui->treeWidget->currentItem()->text(collaststart)).secsTo(QDateTime::currentDateTime())));
+    ui->treeWidget->topLevelItem(runningtaskindex())->setText(coltime,timestring(timestringtoseconds(ui->treeWidget->topLevelItem(runningtaskindex())->text(collasttime))+QDateTime::fromString(ui->treeWidget->topLevelItem(runningtaskindex())->text(collaststart)).secsTo(QDateTime::currentDateTime())));
 }
 
 QString MainWindow::save()
