@@ -476,7 +476,7 @@ void MainWindow::slotstarttiming()
     {
         ui->treeWidget->currentItem()->setIcon(coltimericon,qi_watch[0]);
         ui->treeWidget->currentItem()->setText(collaststart,QDateTime::currentDateTime().toString());
-        ui->treeWidget->currentItem()->setText(collasttime,ui->treeWidget->currentItem()->text(2));
+        ui->treeWidget->currentItem()->setText(collasttime,ui->treeWidget->currentItem()->text(coltime));
         timer->start(1000);
     }
     else QMessageBox::information(0,"Info","First select a task that you want to start timing for.");
