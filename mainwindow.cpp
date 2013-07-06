@@ -377,16 +377,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->resizeColumnToContents(coltaskname);
     ui->treeWidget->header()->resizeSection(coltimericon,20);
     ui->treeWidget->header()->resizeSection(coltime,120);
+    ui->treeWidget->header()->resizeSection(colcomplete,20);
+    ui->treeWidget->setRootIsDecorated(false);
     ui->treeWidget->setColumnCount(6);
     ui->treeWidget->setColumnHidden(collaststart,true);
     ui->treeWidget->setColumnHidden(collasttime,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
-    // col 0: task name
-    item1->setText(coltimericon, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 1: timer icon
-    item1->setText(coltime, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 2: time col
-    // col 3: last start time of task, e.g. Sunday 11:45 (hidden)
-    // col 4: last content of col 2 before start, e.g. 00:00:19 (hidden)
-    item1->setText(colcomplete, QApplication::translate("MainWindow", "completed", 0, QApplication::UnicodeUTF8)); // col 5: completed
+    // col 1: task name
+    item1->setText(coltimericon, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 2: timer icon
+    item1->setText(coltime, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 3: time col
+    // col 4: last start time of task, e.g. Sunday 11:45 (hidden)
+    // col 5: last content of col 2 before start, e.g. 00:00:19 (hidden)
+    item1->setText(colcomplete, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 0: completed
 }
 
 MainWindow::~MainWindow()
@@ -454,9 +456,13 @@ void MainWindow::slotaddtask()
 {
     taskDialog* taskdialog=new taskDialog();
     taskdialog->exec();
-    if (taskdialog->hasaccepted()) ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(taskdialog->text())));
-    save();
-    ui->treeWidget->resizeColumnToContents(coltaskname);
+    if (taskdialog->hasaccepted())
+    {
+        ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString())));
+        ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltaskname,taskdialog->text());
+        save();
+        ui->treeWidget->resizeColumnToContents(coltaskname);
+    }
 }
 
 int timestringtoseconds(QString timestring)
@@ -553,12 +559,17 @@ QString MainWindow::load()
         {
             line=file1.readLine();
             line.replace("\n","");
-            ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString(line))));
+            ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString())));
+            ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltaskname,line);
             line=file1.readLine();
             line.replace("\n","");
             ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltime,line);
             line=file1.readLine();
-            if (line=="complete\n") ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(colcomplete,qi_complete);
+            if (line=="complete\n")
+            {
+                ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setIcon(colcomplete,qi_complete);
+                ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setData(colcomplete,Qt::DisplayRole,QVariant(" "));
+            }
             i++;
         }
         file1.close();
@@ -595,10 +606,12 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
         if (ui->treeWidget->currentItem()->icon(colcomplete).isNull())
         {
             ui->treeWidget->currentItem()->setIcon(colcomplete,qi_complete);
+            ui->treeWidget->currentItem()->setData(colcomplete,Qt::DisplayRole,QVariant(" "));
         }
         else
         {
             ui->treeWidget->currentItem()->setIcon(colcomplete,QIcon());
+            ui->treeWidget->currentItem()->setData(colcomplete,Qt::DisplayRole,QVariant());
         }
         save();
     }
