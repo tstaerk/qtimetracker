@@ -618,8 +618,3 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
         save();
     }
 }
-
-void MainWindow::on_treeWidget_doubleClicked(const QModelIndex &index)
-{
-    qDebug() << "You double-clicked onto an intem in the tree widget";
-}

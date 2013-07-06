@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     mainwindow.cpp \
     taskdialog.cpp
 HEADERS += mainwindow.h \
-    taskdialog.h
+    taskdialog.h \
+    mytreewidget.h
 FORMS += mainwindow.ui \
     taskdialog.ui
 

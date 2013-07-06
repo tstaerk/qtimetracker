@@ -41,7 +41,7 @@
      </widget>
     </item>
     <item row="1" column="0" colspan="4">
-     <widget class="QTreeWidget" name="treeWidget">
+     <widget class="mytreewidget" name="treeWidget">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -123,6 +123,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>mytreewidget</class>
+   <extends>QTreeWidget</extends>
+   <header>mytreewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="qtimetrackerresourcefile.qrc"/>
  </resources>
