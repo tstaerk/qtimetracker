@@ -23,6 +23,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QMessageBox>
+#include <QMouseEvent>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "taskdialog.h"
@@ -356,6 +357,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->treeWidget, SIGNAL(mousepressed(QMouseEvent*)),this,SLOT(on_mousepress(QMouseEvent*)));
     prepareicons();
     load();
     timer=new QTimer();
@@ -597,6 +599,16 @@ void MainWindow::on_btn_stoptimer_clicked()
 void MainWindow::on_btn_deletetask_clicked()
 {
     slotdeletetask();
+}
+
+void MainWindow::on_mousepress(QMouseEvent *e)
+{
+    qDebug() << "entering function on_mousepress ";
+    if (ui->treeWidget->itemAt(e->x(),e->y())==0)
+    {
+        qDebug() << "you clicked on white space";
+        slotaddtask();
+    }
 }
 
 void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
