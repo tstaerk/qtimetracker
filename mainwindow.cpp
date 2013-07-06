@@ -460,6 +460,7 @@ void MainWindow::slotaddtask()
     {
         ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString())));
         ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltaskname,taskdialog->text());
+        ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setFlags(ui->treeWidget->topLevelItem((ui->treeWidget->topLevelItemCount()-1))->flags() | Qt::ItemIsEditable);
         save();
         ui->treeWidget->resizeColumnToContents(coltaskname);
     }
@@ -620,6 +621,4 @@ void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
 void MainWindow::on_treeWidget_doubleClicked(const QModelIndex &index)
 {
     qDebug() << "You double-clicked onto an intem in the tree widget";
-    if (runningtaskindex()==-1) slotstarttiming();
-    else slotstoptiming();
 }
