@@ -357,7 +357,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->treeWidget, SIGNAL(mousepressed(QMouseEvent*)),this,SLOT(on_mousepress(QMouseEvent*)));
+    connect(ui->treeWidget, SIGNAL(mousedoubleclicked(QMouseEvent*)),this,SLOT(on_mousedoubleclick(QMouseEvent*)));
     prepareicons();
     load();
     timer=new QTimer();
@@ -601,12 +601,10 @@ void MainWindow::on_btn_deletetask_clicked()
     slotdeletetask();
 }
 
-void MainWindow::on_mousepress(QMouseEvent *e)
+void MainWindow::on_mousedoubleclick(QMouseEvent *e)
 {
-    qDebug() << "entering function on_mousepress ";
     if (ui->treeWidget->itemAt(e->x(),e->y())==0)
     {
-        qDebug() << "you clicked on white space";
         slotaddtask();
     }
 }

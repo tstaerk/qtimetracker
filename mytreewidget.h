@@ -9,10 +9,10 @@ class mytreewidget : public QTreeWidget {
 public:
     mytreewidget(QWidget *parent = 0){};
     ~mytreewidget(){};
-    void mousePressEvent(QMouseEvent *event) {qDebug() << "test";emit mousepressed(event);QTreeWidget::mousePressEvent(event);}
+    void mouseDoubleClickEvent(QMouseEvent *event) {emit mousedoubleclicked(event);QTreeWidget::mouseDoubleClickEvent(event);}
 
 signals:
-    void mousepressed(QMouseEvent *event);
+    void mousedoubleclicked(QMouseEvent *event);
 
 };
 #endif // MYTREEWIDGET_H
