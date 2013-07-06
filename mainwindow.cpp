@@ -562,6 +562,7 @@ QString MainWindow::load()
             line.replace("\n","");
             ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString())));
             ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltaskname,line);
+            ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setFlags(ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->flags()|Qt::ItemIsEditable);
             line=file1.readLine();
             line.replace("\n","");
             ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltime,line);
