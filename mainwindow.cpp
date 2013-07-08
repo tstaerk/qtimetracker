@@ -481,6 +481,7 @@ QString timestring(int seconds)
 
 void MainWindow::slotstarttiming()
 {
+    stopalltimers();
     if (ui->treeWidget->currentItem())
     {
         ui->treeWidget->currentItem()->setIcon(coltimericon,qi_watch[0]);
@@ -503,6 +504,20 @@ void MainWindow::slotstoptiming()
         }
         save();
     }
+}
+
+void MainWindow::stopalltimers()
+{
+    timer->stop();
+    for (int i=0; i<taskcount(); i=i+1)
+    {
+        if (!ui->treeWidget->topLevelItem(i)->text(collaststart).isEmpty())
+        { // task is really running
+            ui->treeWidget->topLevelItem(i)->setIcon(coltimericon,QIcon());
+            ui->treeWidget->topLevelItem(i)->setText(collaststart,QString()); // mark task as not running
+        }
+    }
+    save();
 }
 
 void MainWindow::slotdeletetask()
