@@ -67,6 +67,7 @@ private slots:
     void slottimer();
     void slotstarttiming();
     void slotstoptiming();
+    void stopalltimers();
     void slotaddtask();
     void slotdeletetask();
     void on_btn_addtask_clicked();
