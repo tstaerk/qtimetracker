@@ -498,12 +498,7 @@ void MainWindow::slotstoptiming()
         if (!ui->treeWidget->currentItem()->text(collaststart).isEmpty())
         { // task is really running
             timer->stop();
-            const QPixmap pm_watch_0(watch_0_xpm);
-            QIcon qi_watch_0(pm_watch_0);
             ui->treeWidget->currentItem()->setIcon(coltimericon,QIcon());
-            QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(collaststart));
-            QDateTime now=QDateTime::currentDateTime();
-            int time=laststart.secsTo(now);
             ui->treeWidget->currentItem()->setText(collaststart,QString()); // mark task as not running
         }
         save();
