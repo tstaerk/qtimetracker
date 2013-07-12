@@ -476,7 +476,7 @@ int timestringtoseconds(QString timestring)
 
 QString timestring(int seconds)
 {
-    return QTime((int)(seconds/3600),(int)(seconds/60),seconds%60).toString();
+    return QTime((int)(seconds/3600),(int)(seconds/60)%60,seconds%60).toString();
 }
 
 void MainWindow::slotstarttiming()
