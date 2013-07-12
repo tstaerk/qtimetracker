@@ -481,6 +481,7 @@ QString timestring(int seconds)
 
 void MainWindow::slotstarttiming()
 {
+    stopalltimers();
     if (ui->treeWidget->currentItem())
     {
         ui->treeWidget->currentItem()->setIcon(coltimericon,qi_watch[0]);
@@ -499,16 +500,25 @@ void MainWindow::slotstoptiming()
         if (!ui->treeWidget->currentItem()->text(collaststart).isEmpty())
         { // task is really running
             timer->stop();
-            const QPixmap pm_watch_0(watch_0_xpm);
-            QIcon qi_watch_0(pm_watch_0);
             ui->treeWidget->currentItem()->setIcon(coltimericon,QIcon());
-            QDateTime laststart=QDateTime::fromString(ui->treeWidget->currentItem()->text(collaststart));
-            QDateTime now=QDateTime::currentDateTime();
-            int time=laststart.secsTo(now);
             ui->treeWidget->currentItem()->setText(collaststart,QString()); // mark task as not running
         }
         save();
     }
+}
+
+void MainWindow::stopalltimers()
+{
+    timer->stop();
+    for (int i=0; i<taskcount(); i=i+1)
+    {
+        if (!ui->treeWidget->topLevelItem(i)->text(collaststart).isEmpty())
+        { // task is really running
+            ui->treeWidget->topLevelItem(i)->setIcon(coltimericon,QIcon());
+            ui->treeWidget->topLevelItem(i)->setText(collaststart,QString()); // mark task as not running
+        }
+    }
+    save();
 }
 
 void MainWindow::slotdeletetask()
