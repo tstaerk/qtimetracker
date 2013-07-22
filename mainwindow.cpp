@@ -630,8 +630,6 @@ void MainWindow::on_mousedoubleclick(QMouseEvent *e)
 
 void MainWindow::on_treeWidget_clicked(const QModelIndex &index)
 {
-    qDebug() << "You clicked onto an intem in the tree widget";
-    qDebug() << "you clicked in column " << index.column();
     if (index.column()==colcomplete)
     {
         if (ui->treeWidget->currentItem()->icon(colcomplete).isNull())
