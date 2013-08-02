@@ -43,7 +43,7 @@ private:
     QTimer *timer;
     QIcon qi_watch[8];
     QIcon qi_complete;
-    int oldtimeinseconds=-1; // remember "time" column when task was started
+    int oldtimeinseconds; // remember "time" column when task was started
     static const int coltaskname=1;
     static const int coltimericon=2;
     static const int coltime=3;

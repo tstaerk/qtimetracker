@@ -354,7 +354,8 @@ static char * watch_7_xpm[] = {
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    oldtimeinseconds(-1)
 {
     ui->setupUi(this);
     connect(ui->treeWidget, SIGNAL(mousedoubleclicked(QMouseEvent*)),this,SLOT(on_mousedoubleclick(QMouseEvent*)));
