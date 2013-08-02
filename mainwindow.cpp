@@ -386,12 +386,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->setColumnHidden(collaststart,true);
     ui->treeWidget->setColumnHidden(collasttime,true);
     QTreeWidgetItem *item1 = ui->treeWidget->headerItem();
+/* For Qt5, QApplication::UnicodeUTF8 is obsolate and QTreeWidgetItem::setText() has only 2 parameters. */
+#if (QT_VERSION >= 0x050000)
+    // col 1: task name
+    item1->setText(coltimericon, QApplication::translate("MainWindow", "", 0)); // col 2: timer icon
+    item1->setText(coltime, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0)); // col 3: time col
+    // col 4: last start time of task, e.g. Sunday 11:45 (hidden)
+    // col 5: last content of col 2 before start, e.g. 00:00:19 (hidden)
+    item1->setText(colcomplete, QApplication::translate("MainWindow", "", 0)); // col 0: completed
+#else
     // col 1: task name
     item1->setText(coltimericon, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 2: timer icon
     item1->setText(coltime, QApplication::translate("MainWindow", "time (hh:mm:ss)", 0, QApplication::UnicodeUTF8)); // col 3: time col
     // col 4: last start time of task, e.g. Sunday 11:45 (hidden)
     // col 5: last content of col 2 before start, e.g. 00:00:19 (hidden)
     item1->setText(colcomplete, QApplication::translate("MainWindow", "", 0, QApplication::UnicodeUTF8)); // col 0: completed
+#endif
 }
 
 MainWindow::~MainWindow()
@@ -464,6 +474,8 @@ void MainWindow::slotaddtask()
         ui->treeWidget->addTopLevelItem(new QTreeWidgetItem(QStringList(QString())));
         ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(coltaskname,taskdialog->text());
         ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setFlags(ui->treeWidget->topLevelItem((ui->treeWidget->topLevelItemCount()-1))->flags() | Qt::ItemIsEditable);
+        /* HINT: When compiling for Qt5 this is necesarry or nothing is shown in the time column. */
+        ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount()-1)->setText(this->coltime, "00:00:00");
         save();
         ui->treeWidget->resizeColumnToContents(coltaskname);
     }
