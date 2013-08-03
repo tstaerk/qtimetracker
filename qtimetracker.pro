@@ -3,6 +3,10 @@
 # -------------------------------------------------
 QT += core \
     gui
+# qt5 needs the widgets because most elements are now in widgets
+contains(QT_VERSION, ^5\\..\\..*) {
+	QT += widgets
+}
 TARGET = qtimetracker
 TEMPLATE = app
 SOURCES += main.cpp \
